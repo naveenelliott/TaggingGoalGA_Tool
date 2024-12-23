@@ -41,7 +41,9 @@ df.rename(columns={'Name': 'Player',
                                   'Video Link': 'Link'}, inplace=True)
 
 df["Video Link"] = df["Link"].apply(lambda url: f'<a href="{url}" target="_blank">Link</a>')
-df.drop(columns = {'Match Date', 'Opposition', 'Period', 'Link'}, inplace=True)
+df.drop(columns = {'Match Date', 'Period', 'Link'}, inplace=True)
+
+df = df.sort_values('Team', ascending=True).reset_index(drop=True)
 
 st.markdown("""
     <style>
